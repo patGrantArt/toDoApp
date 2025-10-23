@@ -1,0 +1,453 @@
+
+:root {
+	--pageWidth: 400px; 
+	--pageHeight: 700px;
+
+    /* COLOURS */
+    --LightRed: #ffcccb; 
+    --Orange: #ffb347;  
+    --Yellow: #ffeb99;  
+    --LightBlue: #b3e5fc;   
+    --LightGreen: #c5e1a5;  
+    
+    /*COMPONENTS*/
+    --card-radius: 16px;
+    --card-bg: rgba(42, 36, 30, 0.43);
+    --card-border: rgba(44, 28, 4, 0.7);
+    --card-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.5);
+
+    --bg_image: url("images/edward_burtynsky_3.jpg");    
+}
+
+
+body {
+    background-image: var(--bg_image);
+    position: absolute;
+    overflow: hidden; 
+	width: calc(var(--pageWidth)*0.96);
+	height: calc(var(--pageHeight)*0.96);
+	margin: 0px;
+	margin-top: calc(var(--pageHeight)*0.02);
+	margin-right: calc(var(--pageWidth)*0.02);
+	margin-bottom: calc(var(--pageHeight)*0.02);
+	margin-left: calc(var(--pageWidth)*0.02);
+	
+	font-size: 1 em;
+	font-family: Helvetica, arial, sans-serif;	
+	color: #484848;
+	background-color: #fff7e6;
+	font-family: 'Poppins', Arial, sans-serif;
+    transition: background-image 3s ease-in-out;
+
+}
+#container {
+    position: absolute;
+    overflow: hidden;
+    /* left: 50%; */
+    width: 50%;
+    height: calc(var(--pageHeight) * 0.8);
+    background: var(--card-bg);
+    min-width: 300px;
+    max-width: 400px;
+    margin: calc(var(--pageHeight) * 0.1) 40% calc(var(--pageHeight) * 0.1) 10%;
+    min-height: calc(var(--pageHeight) * 0.6);
+    max-height: calc(var(--pageHeight) * 0.8);
+    border-radius: var(--card-radius);
+	border: 1px solid var(--card-border);
+	box-shadow: var(--card-shadow);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px); 
+}
+
+/* component styling */
+
+/*CARD*/
+
+/* .card {
+    position: absolute;
+    left: 50%;
+    width: 50%;
+    height: calc(var(--pageHeight) * 0.8);
+    background: var(--card-bg);
+    min-width: 300px;
+    max-width: 400px;
+    margin: calc(var(--pageHeight) * 0.1) 40% calc(var(--pageHeight) * 0.1) 10%;
+    min-height: calc(var(--pageHeight) * 0.6);
+    max-height: calc(var(--pageHeight) * 0.8);
+    border-radius: var(--card-radius);
+	border: 1px solid var(--card-border);
+	box-shadow: var(--card-shadow);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px); 
+} */
+
+
+
+.pill_long {
+	position: relative;
+    width: 90%;
+    height: calc(var(--pageHeight)* 0.04);
+	min-height: 20px;
+    margin: calc(var(--pageHeight)* 0.00) 5%;
+    border-radius: calc(var(--pageHeight)* 0.02);
+	
+}
+.pill_long p {
+	padding: calc(var(--pageHeight)* 0.01) 5%;
+    font-size: calc(var(--pageHeight)* 0.018);	
+    height: 50%;
+	
+}
+.pill_long_dragging {
+	opacity: 0.5;
+
+}
+
+.toDoList_item{
+	position: relative;
+    background-color: rgba(27, 19, 14, 0.85);
+    color: rgb(238, 222, 202);
+    width: 90%;
+    height: calc(var(--pageHeight)* 0.04);
+    min-height: 20px;
+    padding: 3% 5%;
+    border-radius: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+    transition: transform 0.2s, box-shadow 0.2s, top 0.2s ease, left 0.2s ease;
+}
+.toDoList_item p {
+	padding: 0 8% 0 4%;
+    font-size: clamp(14px, calc(var(--pageHeight)* 0.025), 24px);
+    margin: calc(var(--pageHeight)* 0.005) 0 0 0 ;
+    height: calc(var(--pageHeight)* 0.03);
+    overflow: hidden;
+	
+}
+toDoList_item:hover {
+	background-color: #f0f0f0;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.toDoList_item_dragging {
+	opacity: 0.5;
+}
+.toDoList_item_editing {
+    background-color: #f0f0f0;
+    color: #606060;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: text;
+}
+.toDoList_item_editInput {
+position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 0 8% 0 4%;
+    width: 75%;
+    height: calc(var(--pageHeight) * 0.045);
+    color: #606060;
+    font-size: clamp(14px, calc(var(--pageHeight) * 0.02), 24px);
+    margin: 
+        calc(var(--pageHeight) * 0.005) 0 0 2%;
+    overflow: hidden;
+    border-radius: 10px;
+    
+}
+
+
+.toDoList_button_ctnr {
+	position: absolute;
+    right: 4px;
+    top: 8%;
+    height: 84%;
+    width: calc(var(--pageHeight)* 0.03);
+    border-radius: calc(var(--pageHeight)* 0.05);
+    background-color: #6b6363;
+    cursor: none;
+    display: flex;
+    flex-direction: column;
+}
+.toDoList_button {
+    width: 80%;
+    height: 40%;
+    margin: 10%;
+    color: rgb(215 210 204);
+    background-color: rgb(45 41 37);
+    border-radius: 50%;
+    font-size: calc(var(--pageHeight)* 0.015);
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+.toDoList_button:hover {
+    color: rgb(59, 58, 58);
+    background-color: rgb(179, 171, 144);
+}
+
+.dropZone {
+    position: relative;
+    width: 100%;
+    height: calc(var(--pageHeight)* 0.02);
+    /* background-color: #7a6f6f; */
+    border-radius: calc(var(--pageHeight)* 0.02);
+	transition: all 0.4s ease-in-out;
+}
+.dropZone_highlight {
+	height: calc(var(--pageHeight)* 0.08);
+}
+.dropZone_instant_shrink {
+    transition: all 0ms ease-in-out;
+    
+}
+
+.button_small_round {
+	position: absolute;
+    right: 0px;
+	top: 0px;
+    height: 100%;
+    width: calc(var(--pageHeight)* 0.04);
+    border-radius: calc(var(--pageHeight)* 0.02);
+    font-size: calc(var(--pageHeight)* 0.025);
+    font-weight: bold;
+    border: 2px solid;
+	cursor: pointer;
+	background-color: gray;
+	border-color: darkgray;
+	color: rgb(45, 42, 42);
+}
+
+
+/* To do list styling */
+
+.toDoList_ctnr {
+    position: relative;
+    width: 100%;
+    margin: 5% 0% 0 0;
+    min-height: 600px;
+    height: calc(var(--pageHeight)*0.8);
+    max-height: 1200px;
+    overflow-y: auto; 
+    overflow-x: hidden;
+ 
+}
+
+.toDoList_item_ctnr	{
+    position: relative;
+	width: 90%;
+    height: calc(var(--pageHeight)*0.085);
+    margin: 0px 5%;
+    padding: 0;
+    /* background-color: #8b8686; */
+    transition: all 400ms ease-in-out;
+    
+}
+.toDoList_elem_shrink {
+    transition: all 400ms ease-in-out;
+    height: 0px;
+    opacity: 0;
+}
+.toDoList_elem_instant_expand {
+    transition: all 0ms ease-in-out;
+}
+.toDoList_item_ctnr_invisible {
+    transition: all 0ms ease-in-out;
+    height: 0px;
+    opacity: 0;
+}
+
+.toDoList_item_ctnr_dragging {
+	opacity: 0.2;	
+}
+.toDoList_item_ctnr_expanded {
+    /* transition: height 50ms ease-in-out; */
+    height: calc(var(--pageHeight)*0.15);
+}
+.toDoList_item_ctnr_Instant_expand {
+    transition: height 0ms;
+    height: calc(var(--pageHeight)*0.15); 
+}
+.toDoList_item_ctnr_quick_animate {
+    transition: height 50ms; 
+}
+
+/* TICKED ITEMS STYLING */
+
+.toDoList_item_ticked {
+    background-color: #d3d3d3;
+    color: #493737;
+    text-decoration: line-through;
+    opacity: 0.5;
+    cursor: default;
+	position: relative;
+    width: 90%;
+    height: calc(var(--pageHeight)* 0.04);
+    min-height: 20px;
+    padding: 3% 5%;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s, top 0.2s ease, left 0.2s ease;
+}
+.toDoList_item_ticked p {
+	padding: 0 4%;
+    font-size: clamp(14px, calc(var(--pageHeight)* 0.025), 24px);
+    margin: calc(var(--pageHeight)* 0.005) 0 0 0 ;
+    height: calc(var(--pageHeight)* 0.03);
+    overflow: hidden;
+	
+}
+
+
+
+
+
+
+
+/* PRIORITY STYLING */
+.toDoList_item_priority1 {
+    background-color: rgb(58, 26, 26) !important;
+    color: rgb(250, 199, 132);
+}
+.toDoList_item_priority2 {
+    background-color: rgb(58, 26, 26) !important;
+    color: rgb(250, 199, 132);
+}
+.toDoList_item_priority3 {
+    background-color: rgb(58, 26, 26) !important;
+    color: rgb(250, 199, 132);
+}
+
+.toDoList_item_remove {
+	background-color: #b3e8cb;
+    border-color: #9cd3b6;
+    color: #4c4343;
+}
+
+/* artist attribution styling */
+.pill_bgImageAttribution {
+    position: absolute;
+    bottom: calc(var(--pageHeight)* 0.01);
+    right: 2%;
+    width: 10%;
+    min-width: 200px;
+    height: calc(var(--pageHeight)* 0.03);
+    background-color: var(--card-bg);
+    color: #f8f8f8;
+    font-size: calc(var(--pageHeight)* 0.015);
+    text-align: center;
+    
+    border-radius: calc(var(--pageHeight)* 0.02);
+    cursor: pointer;
+    	border: 1px solid var(--card-border);
+	box-shadow: var(--card-shadow);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px); 
+}
+.pill_bgImageAttribution p {
+    margin: 0;
+    opacity: 0.8;
+    padding: calc(var(--pageHeight)* 0.005) 0; 
+    /* font-size: calc(var(--pageHeight)* 0.015); */
+    color: #f8f8f8;
+}
+.pill_bgImageAttribution:hover {
+    background-color: rgba(42, 36, 30, 0.8);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); 
+}   
+.pill_bgImageAttribution:hover p {
+    opacity: 1;
+} 
+
+/* random colours for to do lists items */
+
+.toDoList_item[data-colour="1"] {
+    background-color: #ffcccb; /* Light red  */
+}
+
+.toDoList_item[data-colour="2"] {
+    background-color: #ffb347; /* Orange */
+}
+
+.toDoList_item[data-colour="3"] {
+    background-color: #ffeb99; /* Yellow */
+}
+
+.toDoList_item[data-colour="4"] {
+    background-color: #b3e5fc; /* Light blue */
+}
+
+.toDoList_item[data-colour="5"] {
+    background-color: #c5e1a5; /* Light green */
+}
+
+
+/* input styling */
+
+#newItem_cntr {
+    background-color: rgb(58, 59, 59); 
+    margin: calc(var(--pageHeight)* 0.02) 5%; 
+}
+
+.newItem_input {
+	width: 90%;
+    height: 100%;
+    border: none;
+    border-radius: calc(var(--pageHeight)* 0.02);
+    padding: 0 5% 0 5%;
+	position: absolute;
+}
+.newItem_add {
+    color: #7f5f5f;
+    background-color: #f8da44;
+    border-color:  #fcd124;
+
+}
+.newItem_add:hover {
+    color: #fffbe7;
+    background-color: #7f5f5f;
+    border: 2px solid #463838;
+
+}
+
+
+
+.break {
+    clear: both;
+}
+
+p {
+	margin: 0;
+}
+
+a {
+	text-decoration: underline;
+	font-weight: bold;
+	
+}
+a:hover {
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+a img {
+	border:medium none;
+}
+ul{
+	padding: 0px;
+	margin: 0px;
+    list-style-type: none;
+}  
+
+
+/* DEV TOOLS DELETE before SHIPPING */
+
+.cssBallDisplay {
+	width: calc(var(--pageWidth)*0.2);
+	height: calc(var(--pageHeight)*0.2);
+	border-radius: 20px;
+	background-color: rgb(255, 215, 72);
+	position: absolute;
+	right: calc(var(--pageWidth)*0.2);
+	bottom: calc(var(--pageHeight)*0.2);
+}

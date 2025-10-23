@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Pat's To Do List App</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<script src="modules/devTools.js"></script>
+<script src="modules/todo.js"></script>
+<script src="modules/server.js"></script>
+<script src="modules/dragAndDrop.js"></script>
+<script src="modules/bgImageGallery.js"></script>
+<script src="modules/animate.js"></script>
+<script src="data.js"></script>
+<script src="init.js"></script>
+
+
+
+
+<body>
+    <div id="container">
+        
+        <div id="newItem_cntr" class="pill_long">
+            <input id="newItem_input" class="newItem_input " type="text" value="" placeholder="it never ends">
+            <button id="newItem_add" class="newItem_add button_small_round">+</button>
+        </div>
+        <div id="toDoList_ctnr" class="toDoList_ctnr"></div>
+        
+    </div>
+
+
+</body>
+
+<script>
+    document.onload = letsGo();   
+</script>
+
+</html>
