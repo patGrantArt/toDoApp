@@ -21,8 +21,29 @@ async function letsGo() {
     generateMyToDoList(global_toDoData);
     await initialise_backgroundImages();
     listen();
+    setInterval(pollForUpdates, 30000);
+}
 
-    
+async function pollForUpdates() {
+    const serverData = await retrieveDataFromServer();
+    if (!serverData) return;
+
+    const normalize = arr => JSON.stringify(arr.map(item => ({
+        description: item.description,
+        complete: item.complete,
+        priority: item.priority,
+        timeCreated: item.timeCreated
+    })));
+
+    if (normalize(serverData) !== normalize(global_toDoData)) {
+        console.log("Remote data changed — refreshing list");
+        let result = [];
+        serverData.forEach(e => result.push(new ToDoItem(e)));
+        global_toDoData = result;
+        let cntr = document.getElementById("toDoList_ctnr");
+        cntr.innerHTML = "";
+        generateMyToDoList(global_toDoData);
+    }
 }
 
 //set globals in reference to current window size

@@ -32,7 +32,7 @@ async function addNewToDoItem(string) {
 function tickToDoItem(string) {
     console.log("ticking item with the string ", string);
     let elemToMove = document.getElementById("ctnr_" + string);
-    console.log("======================");
+
 
 
     console.log("moving this element: ");
