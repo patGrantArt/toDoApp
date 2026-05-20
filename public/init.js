@@ -37,12 +37,23 @@ async function pollForUpdates() {
 
     if (normalize(serverData) !== normalize(global_toDoData)) {
         console.log("Remote data changed — refreshing list");
+
+        // shrink out existing items
+        let cntr = document.getElementById("toDoList_ctnr");
+        Array.from(cntr.children).forEach(elem => animateShrinkDraggedElement(elem));
+        await pauseFor(400);
+
+        // rebuild with fresh data
         let result = [];
         serverData.forEach(e => result.push(new ToDoItem(e)));
         global_toDoData = result;
-        let cntr = document.getElementById("toDoList_ctnr");
         cntr.innerHTML = "";
         generateMyToDoList(global_toDoData);
+
+        // fade new items in
+        Array.from(cntr.children).forEach(elem => elem.classList.add("toDoList_item_ctnr_invisible"));
+        await pauseFor(0);
+        Array.from(cntr.children).forEach(elem => animateSlowRestore(elem));
     }
 }
 
@@ -69,12 +80,12 @@ function windowResized() {
 //Event listeners at Initialisation 
 // (elem specific events can be found in elem constructors)
 function listen(){
-    window.addEventListener('resize', (e) => {
+    window.addEventListener('resize', (_) => {
         console.log("resize!")
         setLayoutVariables();
 
     })
-    document.getElementById("newItem_add").addEventListener("click", (event) => {
+    document.getElementById("newItem_add").addEventListener("click", (_) => {
         let inputElem = document.getElementById("newItem_input");
         let theString = inputElem.value;
         console.log(theString);
