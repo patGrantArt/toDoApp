@@ -1,0 +1,21 @@
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/appData"
+  to = "/.netlify/functions/appData"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/toDo"
+  to = "/.netlify/functions/toDo"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/bgImages"
+  to = "/.netlify/functions/bgImages"
+  status = 200
+  force = true
