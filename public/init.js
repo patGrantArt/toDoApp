@@ -21,6 +21,7 @@ async function letsGo() {
     generateMyToDoList(global_toDoData);
     await initialise_backgroundImages();
     listen();
+    document.getElementById('loading_screen').classList.add('hidden');
     setInterval(pollForUpdates, 30000);
 }
 

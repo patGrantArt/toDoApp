@@ -22,16 +22,23 @@ metadata:
 
 ## Still To Do
 
-**Goal 2: Mobile-responsive styling**
-- App currently desktop-only, needs CSS work to work well on phones
+**Sync bug fix — polling (in progress)**
+- Added `pollForUpdates()` to `init.js` — fetches from MongoDB every 30 seconds, animates refresh if data has changed
+- Animations on poll refresh are still a bit buggy — needs investigation next session
+
+**Goal 2: Mobile touch support**
+- Touch screen functionality for drag-and-drop on mobile (current drag/drop uses mouse events only)
+- One more item to add (user to clarify next session)
 
 **Goal 3: Authentication**
 - Add a login/security layer so only the owner can access the app
 - Likely approach: Netlify Identity or a simple password gate
+
+## Housekeeping (do when convenient)
+- Clean up redundant Node.js clutter — `app.js`, `appTools.js` no longer used in production; `scripts/importTodos.js` also done
 
 ## Key Details
 - GitHub repo: https://github.com/patGrantArt/toDoApp
 - MongoDB cluster: dotoitems.iv4micu.mongodb.net
 - MongoDB user: patgrantart_db_user
 - Database: todoapp, Collection: todos
-- Migration script lives at: scripts/importTodos.js (can be deleted now that migration is done)

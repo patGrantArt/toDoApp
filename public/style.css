@@ -440,6 +440,37 @@ ul{
 }  
 
 
+/* LOADING SCREEN */
+
+#loading_screen {
+    position: absolute;
+    left: -10%;
+    top: -10%;
+    height: 120%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    background-color: #2a2a2a;
+    transition: opacity 1s ease-in-out;
+    width: 120%;    
+}
+#loading_screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+#loading_spinner {
+    width: 40px;
+    height: 40px;
+    border: 10px solid rgba(238, 222, 202, 0.2);
+    border-top-color: rgb(238, 222, 202);
+    border-radius: 50%;
+    animation: spin 1.6s linear infinite;
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
 /* DEV TOOLS DELETE before SHIPPING */
 
 .cssBallDisplay {
