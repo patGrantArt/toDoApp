@@ -51,6 +51,11 @@ function refreshBackgroundImage() {
     }
     document.documentElement.style.setProperty('--bg_image', `url(${backgroundImageURLS[currentIndex + 1]})`);
     updateImageAttribution()
+    // preload the next image
+    let nextIndex = currentIndex + 2;
+    if (nextIndex >= array.length) { nextIndex = nextIndex - array.length; }
+    const img = new Image();
+    img.src = backgroundImageURLS[nextIndex];
 }
 
 function updateImageAttribution(){
@@ -65,8 +70,8 @@ function updateImageAttribution(){
 }
 
 
-// a function that calls refreshBackgroundImage() eveny 30 min
+// a function that calls refreshBackgroundImage() evenry 30 min
     function startBackgroundImageRotation() {
     console.log("starting background image rotation");
-    setInterval(refreshBackgroundImage, 1800000); 
+    setInterval(refreshBackgroundImage, 5000); 
 }
