@@ -4,14 +4,18 @@
 
 //globals - APP DATA
 let global_toDoData;
-let backgroundImageURLS
+
 
 //globals - LAYOUT
 let pageWidth;
 let pageHeight;
 let pageOrientation = "portrait"; //landscape, portrait (default), square
 
-
+//globals - BG IMAGES
+let backgroundImageURLS; //array
+let imageCache = [];//array?
+let imageCurrent; //obj
+let imageNext; //obj
 
 //initialisation function.
 async function letsGo() {

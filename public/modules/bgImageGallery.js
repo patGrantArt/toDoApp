@@ -3,12 +3,40 @@ console.log("Image Gallery module loaded");
 async function initialise_backgroundImages(){
     console.log("initliasing background images");
     backgroundImageURLS = await retrieveImageUrls() 
+    loadFirstImage();
     generate_AttributionElem();
     randomBackgroundImage()
     updateImageAttribution();
+    await pauseFor(5000)
     startBackgroundImageRotation();
+    loadRemainingImages()
 };
 
+
+
+function loadFirstImage(){
+    console.log("========== ==========")
+    console.log("loading first image")
+    imageCurrent = new Image();
+    imageCurrent.src = backgroundImageURLS[0];
+    imageCache.push(imageCurrent);
+    console.log("done");
+    console.log(imageCache);
+}
+
+function loadRemainingImages(){
+    console.log("%%%%%%%%%%%%%%%%")
+    console.log("loading the rest of the images")
+    let list = backgroundImageURLS;
+    for (let i=1; i<list.length; i++){
+        console.log("loading: ", list[i])
+        let img = new Image();
+        img.src = list[i];
+        imageCache.push(img);
+    }
+    console.log("done");
+    console.log(imageCache);
+}
 
 function generate_AttributionElem(){
 
@@ -73,5 +101,5 @@ function updateImageAttribution(){
 // a function that calls refreshBackgroundImage() evenry 30 min
     function startBackgroundImageRotation() {
     console.log("starting background image rotation");
-    setInterval(refreshBackgroundImage, 5000); 
+    setInterval(refreshBackgroundImage, 10000); 
 }
