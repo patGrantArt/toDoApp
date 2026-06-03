@@ -26,6 +26,7 @@ async function letsGo() {
     await initialise_backgroundImages();
     listen();
     document.getElementById('loading_screen').classList.add('hidden');
+    loadRemainingImages();
     setInterval(pollForUpdates, 30000);
 }
 

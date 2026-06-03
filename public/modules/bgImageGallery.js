@@ -7,11 +7,8 @@ async function initialise_backgroundImages(){
     generate_AttributionElem();
     randomBackgroundImage()
     updateImageAttribution();
-    await pauseFor(5000)
     startBackgroundImageRotation();
-    loadRemainingImages()
 };
-
 
 
 function loadFirstImage(){
@@ -99,7 +96,8 @@ function updateImageAttribution(){
 
 
 // a function that calls refreshBackgroundImage() evenry 30 min
-    function startBackgroundImageRotation() {
+    async function startBackgroundImageRotation() {
     console.log("starting background image rotation");
+    await pauseFor(5000);
     setInterval(refreshBackgroundImage, 10000); 
 }
