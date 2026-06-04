@@ -29,16 +29,23 @@ async function addNewToDoItem(string) {
     document.getElementById("newItem_input").placeholder = randofrom(discouragingSentiments);
 }
 
-function tickToDoItem(string) {
+async function tickToDoItem(string) {
     console.log("ticking item with the string ", string);
     let elemToMove = document.getElementById("ctnr_" + string);
-
+    
+    
+    //adding strike animation
+    let p = elemToMove.querySelector("p");
+    p.classList.add("striking");
 
 
     console.log("moving this element: ");
     console.log(elemToMove);
-    animateShrinkDraggedElement(elemToMove)
 
+    pauseFor(500).then(() => {
+        animateShrinkDraggedElement(elemToMove)
+    });
+    
     let listContainer = document.getElementById("toDoList_ctnr");
     let destinationIndex = getIndex_topOfTicked(global_toDoData);
     let obj = getObjectByDescription(string);
@@ -46,7 +53,7 @@ function tickToDoItem(string) {
     console.log("recreating ticked item to: ", destinationIndex);
 
 
-    pauseFor(400).then(() => {
+    pauseFor(900).then(() => {
         console.log("moving this element: ");
         //remove elem to move from the DOM
         elemToMove.parentNode.removeChild(elemToMove);

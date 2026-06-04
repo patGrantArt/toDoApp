@@ -98,6 +98,6 @@ function updateImageAttribution(){
 // a function that calls refreshBackgroundImage() evenry 30 min
     async function startBackgroundImageRotation() {
     console.log("starting background image rotation");
-    await pauseFor(5000);
+    await pauseFor(10000);
     setInterval(refreshBackgroundImage, 10000); 
 }

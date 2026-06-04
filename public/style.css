@@ -269,6 +269,26 @@ position: absolute;
     transition: height 50ms; 
 }
 
+/* TICK ANIMATION */
+@keyframes strikethrough {
+    from { width: 0% }
+    to { width: 94% }
+}
+.striking {
+    position: relative;
+}
+.striking::after {
+    content: '';
+    position: absolute;
+    top: 40%;
+    left: 0px;
+    height: 20%;
+    border-radius: 4px;
+    background-color: var(--Yellow);
+    width: 0;
+    animation: strikethrough 500ms ease-in-out forwards;
+}
+
 /* TICKED ITEMS STYLING */
 
 .toDoList_item_ticked {
